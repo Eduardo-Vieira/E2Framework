@@ -4,12 +4,14 @@
          <h1>Editar - Pessoas</h1>
     </div>
         <?php echo $GLOBALS['msg'];?>
+    <div class="row">
+        <div class="col-lg-6">
         <form action="" method="POST">
             <div class="form-group">
-              <label for="pess_dtCad">Data Cad.</label>
-              <input type="text" class="form-control" id="pess_dtCad"
-                     name="pess_dtCad" value="<?php echo $Rows[0][1]?>"
-                     placeholder="99/99/9999">
+                <label for="pess_dtCad">Data Cad.</label>
+                <p><?php echo $Rows[0][1]?></p>
+                <input type="hidden" class="form-control" id="pess_dtCad"
+                     name="pess_dtCad"  value="<?php echo $Rows[0][1]?>"/>
             </div>
             <div class="form-group">
               <label for="pess_Nome">Nome</label>
@@ -34,7 +36,9 @@
               <input type="checkbox" class="form-control" id="pess_ativo"
                      name="pess_ativo" <?php if($Rows[0][5]=='on'){echo "checked";}else{echo "";}?>/>
             </div>
-            <button type="submit" class="btn btn-default" id="bntsalvar" name="bntsalvar">Salvar</button>
+            <button type="submit" class="btn btn-default" id="bntsalvar" name="bntsalvar"><i class="glyphicon glyphicon-floppy-saved"></i> Salvar</button>
             <input type="hidden" id="pess_ID" name="pess_ID" value="<?php echo $_SESSION['ID'][1];?>" />
         </form>
+        </div>
+    </div>
 </div>

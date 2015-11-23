@@ -9,6 +9,9 @@ class Controller extends db {
         return require_once 'app/models/'.$n_model.'.php';   
     
     }
+    # * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+    # FUNÇÃO de Mensagem
+    # * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
     protected function mensagem($texto){
         return '<div class="alert alert-success" role="alert">'.$texto.'</div>';
     }

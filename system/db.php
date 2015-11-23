@@ -49,14 +49,14 @@ class db extends Config {
             }
         }
         $sql .= " WHERE ".$this->c['Coluna'][0]." = ".$dados[0];
-                      
+        
         $this->Db()->exec($sql);
         return $this->mensagem("Registro Salvo Com Sucesso!");
     }
     //DELETE
     public function Delete($dados=''){
         $sql  =  "DELETE FROM ".$this->c['Tabela'];
-        $sql .= " WHERE ".$this->c['Coluna'][0]." = ".$dados[0];                 
+        $sql .= " WHERE ".$this->c['Coluna'][0]." = ".$dados;                 
         
         $this->Db()->exec($sql);
         return $this->mensagem("Registro Deletado Com Sucesso!");

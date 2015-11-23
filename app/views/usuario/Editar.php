@@ -2,6 +2,8 @@
 <div class="container">
         <h1>Editar - Usuário</h1>
         <?php echo $GLOBALS['msg'];?>
+        <div class="row">
+        <div class="col-lg-6">
         <form action="" method="POST">
             <div class="form-group">
               <label for="exampleInputEmail1">Nome Completo</label>
@@ -32,6 +34,8 @@
             <button type="submit" class="btn btn-default" id="bntsalvar" name="bntsalvar">Salvar</button>
             <input type="hidden" id="usua_ID" name="usua_ID" value="<?php echo $_SESSION['ID'][1];?>" />
                    
-       </form> 
+       </form>
+       </div>
+    </div>
 </div>
 

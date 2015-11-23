@@ -16,6 +16,8 @@ require_once ('system/db.php');
 require_once ('system/controller.php');
 require_once ('app/controllers/'.$controller.'Controller.php');
 
+$GLOBALS['jsController'] = $controller;
+
 $app = new $controller();
 $_SESSION['Titulo'] = $app->titulo;
 $_SESSION['Versao'] = $app->versao;

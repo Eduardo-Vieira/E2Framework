@@ -7,7 +7,7 @@
         <h1>Pessoas</h1>
     </div>
     
-   <p><a href="?r=pessoas/novo" class="btn btn-large btn-primary">Nova Pessoa</a></p>
+    <p><a href="?r=pessoas/novo" class="btn btn-large btn-primary"><i class="glyphicon glyphicon-plus-sign"></i> Nova Pessoa</a></p>
     
    <form action="" method="POST" class="form-horizontal">
     <div class="form-group">
@@ -56,8 +56,8 @@
             echo '<td>'.$Rows[$i][3].'</td>';
             echo '<td>'.$Rows[$i][4].'</td>';
             echo '<td>'.$Rows[$i][5].'</td>';
-            echo '<td><a href="?r=pessoas/editar/'.$Rows[$i][0].'">Editar</a> ';
-            echo '<a href="?r=pessoas/delete/'.$Rows[$i][0].'">Delete</a></td>';
+            echo '<td><div class="btn-group btn-group-xs" role="group" aria-label="..."><a href="?r=pessoas/editar/'.$Rows[$i][0].'" title="Editar" class="btn btn-default"><i class="glyphicon glyphicon-pencil"></i></a> ';
+            echo '<a href="?r=pessoas/delete/'.$Rows[$i][0].'" title="Deletar" class="btn btn-default"><i class="glyphicon glyphicon-remove"></i></a></div></td>';
             echo '</tr>';
         }
     ?>

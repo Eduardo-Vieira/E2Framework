@@ -75,4 +75,15 @@ class Usuario extends Controller {
         $this->view('usuario/Editar');
         
     }
+    public function Delete($pr = '') {
+        $_SESSION['ID']  = $pr;
+        
+        //Abrir o Modelo
+        $this->Model('tb_usuario');
+        $cm = new tb_usuario();
+        $GLOBALS['msg'] = $cm->Delete($_SESSION['ID']);
+
+       //View
+        $this->view('usuario/delete');
+    }
 }

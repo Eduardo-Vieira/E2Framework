@@ -41,11 +41,12 @@ class Pessoas extends Controller {
         $cm = new tb_pessoas();       
         //Insert pelo modelo
         if(isset($_POST['bntsalvar'])){
-          $dados = "'".$cm->converter_datas($_POST['pess_dtCad'])."',
+            if($_POST['pess_ativo']!='on'){$ativo ='off';}else{$ativo ='on';}
+            $dados = "'".$cm->converter_datas($_POST['pess_dtCad'])."',
               '".$_POST['pess_Nome']."',
               '".$_POST['pess_telefone']."',
               '".$_POST['pess_email']."',
-              '".$_POST['pess_ativo']."'
+              '".$ativo."'
                ";         
            $GLOBALS['msg'] = $cm->Insert($dados);  
         }
@@ -60,6 +61,7 @@ class Pessoas extends Controller {
         $cm = new tb_pessoas();
         
         //Salvar pelo modelo
+        if($_POST['pess_ativo']== null){$ativo ='off';}else{$ativo ='on';}      
         if(isset($_POST['bntsalvar'])){
           $dados = array(
               $_POST['pess_ID'],
@@ -67,7 +69,7 @@ class Pessoas extends Controller {
               $_POST['pess_Nome'],
               $_POST['pess_telefone'],
               $_POST['pess_email'],
-              $_POST['pess_ativo']
+              $ativo
               );    
           $GLOBALS['msg'] = $cm->Update($dados);  
         }
@@ -80,5 +82,18 @@ class Pessoas extends Controller {
         //View
         $this->view('pessoas/Editar');
         
+    }
+    
+    public function Delete($pr = '') {
+        $_SESSION['ID']  = $pr;
+        
+        //Abrir o Modelo
+        $this->Model('tb_pessoas');
+        $cm = new tb_pessoas();
+        
+        $GLOBALS['msg'] = $cm->Delete($_SESSION['ID']);
+
+       //View
+        $this->view('pessoas/delete');
     }
 }
