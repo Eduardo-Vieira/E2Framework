@@ -9,6 +9,9 @@ $controller = $rSeparar[0];
 $action = ($rSeparar[1] == null ? 'index' : $rSeparar[1]);
 $parametro = (!isset($rSeparar[2]) ? '' : $rSeparar[2]);
 
+//JS Controller 
+$GLOBALS['jsController'] = $action;
+
 //CLASS DO SISTEMA
 require_once ('system/config.php');
 require_once ('system/db.php');
