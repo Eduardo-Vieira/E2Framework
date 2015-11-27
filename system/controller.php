@@ -1,7 +1,14 @@
 <?php
 
 class Controller extends db {
+    
+    public function getSystem(){
+      $_SESSION['Titulo'] = $this->titulo;
+      $_SESSION['Versao'] = $this->versao;  
+    }
+    
     protected function view($n_view){
+        $this->getSystem();
         return require_once 'app/views/'.$n_view.'.php';   
     
     }

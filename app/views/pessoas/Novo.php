@@ -2,7 +2,7 @@
     <div class="page-header">
         <h1>Cadastro Novo</h1>
     </div>
-        <?php echo(!isset($GLOBALS['msg']))? '': $GLOBALS['msg'];?>
+       <?php echo (!isset($GLOBALS['msg'])?'':$GLOBALS['msg']);?>
     <div class="row">
         <div class="col-lg-6">
         <form action="" method="POST">

@@ -3,7 +3,6 @@
         <div class="panel panel-default">
         <!-- Default panel contents -->
         <div class="panel-heading">Login</div>
-              <?php echo $GLOBALS['msg'];?>
                 <form action="?r=login/autentica" method="POST" style="padding: 20px;">
                     <div class="form-group">
                       <label for="exampleInputEmail">E-mail</label>

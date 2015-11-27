@@ -2,7 +2,6 @@
 if (!isset($_SESSION)) {
       session_start();
 }
-
 $_GET['r'] = (isset($_GET['r'])? $_GET['r'].'/': 'index/index');
 
 $rSeparar = explode('/', $_GET['r']);
@@ -16,12 +15,7 @@ require_once ('system/db.php');
 require_once ('system/controller.php');
 require_once ('app/controllers/'.$controller.'Controller.php');
 
-$GLOBALS['jsController'] = $controller;
-
 $app = new $controller();
-$_SESSION['Titulo'] = $app->titulo;
-$_SESSION['Versao'] = $app->versao;
-
 //TEMPLETE
 require_once ('app/views/head.php');
 require_once ('app/views/nav.php');

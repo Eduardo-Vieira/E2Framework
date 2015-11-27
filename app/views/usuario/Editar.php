@@ -1,7 +1,7 @@
 <?php $Rows = $GLOBALS['Rows'];?>   
 <div class="container">
         <h1>Editar - Usuário</h1>
-        <?php echo $GLOBALS['msg'];?>
+       <?php echo (!isset($GLOBALS['msg'])?'':$GLOBALS['msg']);?>
         <div class="row">
         <div class="col-lg-6">
         <form action="" method="POST">
