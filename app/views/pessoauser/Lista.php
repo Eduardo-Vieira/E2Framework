@@ -4,21 +4,15 @@
 ?>   
 <div class="container">
     <div class="page-header">
-        <h1>Usuário</h1>
+        <h1>Pessoas User</h1>
     </div>
-    
-   <p><a href="?r=usuario/novo" class="btn btn-large btn-primary">Novo Usuário</a></p>
-    
+
    <form action="" method="POST" class="form-horizontal">
     <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label">Coluna</label>
     <div class="col-sm-6">
         <select class="form-control" placeholder="Coluna" name="COLUNA">
                    <option value="0">ID</option>
-                   <option value="1">Nome Completo</option>
-                   <option value="2">CPF</option>
-                   <option value="3">Login</option>
-                   <option value="4">e-mail</option>
         </select>
     </div>
     </div>
@@ -38,16 +32,17 @@
 <!---------------- Tabela de Registro --------------------->
   <div class="panel panel-default">
   <!-- Default panel contents -->
-  <div class="panel-heading">Registros de Usuário</div>
+  <div class="panel-heading">Registros de Pessoas</div>
 
    <table class="table table-hover table-bordered">
         <tr>
             <th align="center">#</th>
-            <th>Nome Completo</th>
-            <th>CPF</th>
-            <th>Login</th>
+            <th>Data Cad.</th>
+            <th>Nome</th>
+            <th>Telefone</th>
             <th>Email</th>
-            <th></th>
+            <th>Ativo</th>
+           
         </tr>
         <?php
            
@@ -58,11 +53,14 @@
             echo '<td>'.$Rows[$i][2].'</td>';
             echo '<td>'.$Rows[$i][3].'</td>';
             echo '<td>'.$Rows[$i][4].'</td>';
-            echo '<td><div class="btn-group btn-group-xs" role="group" aria-label="..."><a href="?r=usuario/editar/'.$Rows[$i][0].'" title="Editar" class="btn btn-default"><i class="glyphicon glyphicon-pencil"></i></a> ';
-            echo '<a href="?r=usuario/delete/'.$Rows[$i][0].'" title="Deletar" class="btn btn-default"><i class="glyphicon glyphicon-remove"></i></a></div></td>';
+            echo '<td>'.$Rows[$i][5].'</td>';
+            echo '<td>'.$Rows[$i][6].'</td>';
+            echo '<td>'.$Rows[$i][7].'</td>';
             echo '</tr>';
         }
     ?>
     </table>
   </div>
 </div>
+
+

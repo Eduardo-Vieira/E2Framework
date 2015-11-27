@@ -13,11 +13,12 @@ class db extends Config {
     
     //SELECT
     public function Select($dados=''){
-        
+       
         $sql = "SELECT ".implode(",",$this->c['Coluna'])." FROM ".$this->c['Tabela'];
         
         $sql .= ($dados != null ? " WHERE ".$this->c['Coluna'][$dados[0]]." like '%".$dados[1]."%'" : null);
-                      
+        
+               
         $n_rows = $this->Db()->query($sql)->rowCount();
         $rs = $this->Db()->query($sql)->fetchAll(PDO::FETCH_NUM);
         

@@ -8,7 +8,7 @@ $_GET['r'] = (isset($_GET['r'])? $_GET['r'].'/': 'index/index');
 $rSeparar = explode('/', $_GET['r']);
 $controller = $rSeparar[0];
 $action = ($rSeparar[1] == null ? 'index' : $rSeparar[1]);
-$parametro = ($rSeparar[2] == null ? '' : $rSeparar[2]);
+$parametro = (!isset($rSeparar[2]) ? '' : $rSeparar[2]);
 
 //CLASS DO SISTEMA
 require_once ('system/config.php');
