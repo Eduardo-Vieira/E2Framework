@@ -2,7 +2,12 @@
 if (!isset($_SESSION)) {
       session_start();
 }
-$_GET['r'] = (isset($_GET['r'])? $_GET['r'].'/': 'index/index');
+
+if(!isset($_SESSION['USER'])){
+    $_GET['r'] = (isset($_GET['r'])? $_GET['r'].'/': 'login/index');
+}else{
+    $_GET['r'] = (isset($_GET['r'])? $_GET['r'].'/': 'index/index');
+}
 
 $rSeparar = explode('/', $_GET['r']);
 $controller = $rSeparar[0];

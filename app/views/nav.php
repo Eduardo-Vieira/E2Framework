@@ -26,6 +26,7 @@
                   <ul class="dropdown-menu">
                     <li><a href="?r=usuario">Usuário</a></li>
                     <li><a href="?r=pessoas">Pessoas</a></li>
+                     <li><a href="?r=menu">Menu</a></li>
                   </ul>
                 </li>
           <?php

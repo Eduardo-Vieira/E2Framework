@@ -13,26 +13,36 @@ class db extends Config {
     
     //SELECT
     public function Select($dados=''){
-       
+       try {
         $sql = "SELECT ".implode(",",$this->c['Coluna'])." FROM ".$this->c['Tabela'];
         
-        $sql .= ($dados != null ? " WHERE ".$this->c['Coluna'][$dados[0]]." like '%".$dados[1]."%'" : null);
-        
+        $sql .= ($dados != null ? " WHERE ".$this->c['Coluna'][$dados[0]]." LIKE :dados" : null);
+                       
+        $stmt = $this->Db()->prepare($sql);
+        $stmt->bindValue(':dados','%'.$dados[1].'%');
+        $stmt->execute();
                
-        $n_rows = $this->Db()->query($sql)->rowCount();
-        $rs = $this->Db()->query($sql)->fetchAll(PDO::FETCH_NUM);
+        $n_rows = $stmt->rowCount();
+        $rs = $stmt->fetchAll(PDO::FETCH_NUM);
         
-        return array($n_rows,$rs);   
-       
+        return array($n_rows,$rs);
+        
+        
+       } catch(PDOException $e) {
+        echo 'Error: ' . $e->getMessage();
+       }     
     }
     // INSERT INTO
     public function Insert($dados=''){
         
         $sql  = "INSERT INTO ".$this->c['Tabela']."(";
         $sql .= implode(",",$this->c['Coluna']).")";
-        $sql .= " VALUE (0,".$dados.")"; 
-        
-        $this->Db()->exec($sql);       
+      
+        $stmt = $this->Db()->prepare($sql.' VALUES(0,:dados)');
+        $stmt->execute(array(
+            ':dados' => $dados
+        ));
+ 
         return $this->mensagem("Registro Salvo Com Sucesso!");
         
     }
@@ -48,18 +58,23 @@ class db extends Config {
             }else{
                $sql .= $this->c['Coluna'][$i]."='".$dados[$i]."'"; 
             }
-        }
-        $sql .= " WHERE ".$this->c['Coluna'][0]." = ".$dados[0];
+        }      
+        $stmt = $this->Db()->prepare($sql." WHERE ".$this->c['Coluna'][0]." = :id");  
+        $stmt->execute(array(
+                    ':id'=> $dados[0]
+                ));
+
         
-        $this->Db()->exec($sql);
         return $this->mensagem("Registro Salvo Com Sucesso!");
     }
     //DELETE
     public function Delete($dados=''){
         $sql  =  "DELETE FROM ".$this->c['Tabela'];
-        $sql .= " WHERE ".$this->c['Coluna'][0]." = ".$dados;                 
-        
-        $this->Db()->exec($sql);
+        $sql .= " WHERE ".$this->c['Coluna'][0]." = :id";                 
+        $stmt = $this->Db()->prepare($sql);
+        $stmt->execute(array(
+                    ':id'=> $dados[0]
+                ));
         return $this->mensagem("Registro Deletado Com Sucesso!");
     }
     
